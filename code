@@ -1,0 +1,104 @@
+#include <iostream>
+#include <fstream>
+#include <cmath>
+#include <cstdlib>
+#include <windows.h>
+#include <iomanip>
+#include <conio.h>
+#include <cstring>
+using namespace std;
+struct elev{
+     char nume[31];
+     int varsta;
+     float note[10];
+     float medie;
+    }x;
+void initelev ()
+{
+    cout<<"Bine ati venit la initializarea datelor despre elev. Ce vreti sa initializati?"<<endl;
+    Sleep(1);
+    cout<<"1.Numele"<<endl;  cout<<"2.Varsta"<<endl; Sleep(1); cout<<"3.Notele"<<endl; Sleep(1);
+    int raspuns;
+    cin>>raspuns;
+    switch(raspuns)
+    {
+        case 1:
+            {
+                cout<<"Numele curent al elevului este: "<<x.nume<<endl;
+           cout<<"Nume elev:";
+           cin>>x.nume;
+           const char auxnume[31]={x.nume[31]};
+           for(int i=1;i<=strlen(auxnume);i++)
+           if(strchr("0123456789",x.nume[i]))
+           {
+            cout<<"Numele nu este permis";
+            strcpy(x.nume , "0");
+            break;
+           }
+           cout<<"Noul nume: "<<x.nume<<endl;
+           break;
+            }
+        case 2:
+            {
+              cin>>x.varsta;
+              break;
+            }
+        case 3:
+            {
+            int k;
+            cout<<"Cate note?"; cin>>k;
+            for(int i=1;i<=k;i++)
+            {
+             cin>>x.note[i];
+            }
+            break;
+            }
+        case 69:
+            {
+                main();
+                break;
+            }
+        default: cout<<"Error, something went wrong, please try again."<<endl; getch();
+
+
+    }
+
+
+}
+int main()
+{
+    bool Run=true;
+    cout<<"Program successfully booted up! Welcome! [ENTER TO CONTINUE]";
+    getch();
+    system("cls");
+    while(Run==true)
+    {
+     cout<<"Selecteaza o optiune de mai jos:"<<endl;
+     Sleep(1);
+     cout<<"1.Initializare date elev."<<endl<<"2.Iesire"<<endl<<"3.Afla media"<<endl;;
+     int raspuns; cin>>raspuns;
+     switch (raspuns)
+     {
+
+
+   case 1:
+    {
+      initelev();
+      break;
+    }
+   case 2:
+    {
+     Run=false;
+     break;
+    }
+   case 69:
+       {
+    main();
+    break;  // haha funny number resets the program go brrrrrr
+       }
+   default: cout<<"Error. Try again.";
+     }
+    }
+  cout<<"Program has ended. Thanks for using it!"<<endl;
+    return 0;
+}
